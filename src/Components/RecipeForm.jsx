@@ -20,7 +20,7 @@ const RecipeForm = ({ onAddRecipe }) => {
       {errors.name && <small className="text-danger">{errors.name}</small>}
       <textarea
         name="ingredients"
-        placeholder="Ingredients"
+        placeholder="Ingredients, separated by commas"
         value={values.ingredients}
         onChange={handleChange}
         className="form-control mb-2"

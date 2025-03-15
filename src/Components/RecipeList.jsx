@@ -1,6 +1,3 @@
-import React from "react";
-// import RecipeList from "./RecipeList.css";
-
 const RecipeList = ({ recipes }) => {
   return (
     <div className="container">
@@ -17,8 +14,20 @@ const RecipeList = ({ recipes }) => {
                 <div className="card-body">
                   <h5 className="card-title">{recipe.name}</h5>
                   <p className="card-text">
-                    <strong>Ingredientss:</strong> {recipe.ingredients}
+                    <strong>Ingredients:</strong>
                   </p>
+                  <ul>
+                    {recipe.ingredients ? (
+                      recipe.ingredients
+                        .split(",")
+                        .map((ingredient, index) => (
+                          <li key={index}>{ingredient.trim()}</li>
+                        ))
+                    ) : (
+                      <li>No ingredients listed.</li>
+                    )}
+                  </ul>
+
                   <p className="card-text">
                     <strong>Instructions:</strong> {recipe.instructions}
                   </p>

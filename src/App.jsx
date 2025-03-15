@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import RecipeForm from "./components/RecipeForm";
-import RecipeList from "./components/RecipeList";
+import RecipeList from "./Components/RecipeList";
+import RecipeForm from "./Components/RecipeForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import bannerImage from "./assets/banner.jpg";
 
@@ -35,7 +35,8 @@ function App() {
 
   const addRecipe = async (newRecipe) => {
     try {
-      await axios.post(API_URL, newRecipe);
+      const response = await axios.post(API_URL, newRecipe);
+      console.log("Recipe added:", response.data);
       fetchRecipes();
     } catch (error) {
       console.error("Error adding recipe:", error);
@@ -55,5 +56,19 @@ function App() {
     </div>
   );
 }
+
+//https:developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+// const user = {
+//   name: "Alex",
+//   age: 22,
+//   city: "Champaign",
+// };
+
+// const entries = Object.entries(user); //pair key and value, array of arrays
+// console.log(entries);
+
+// for (const [key, value] of entries) {
+//   console.log(`${key}: ${value} paired`);
+// }
 
 export default App;
