@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 const RecipeList = ({ recipes }) => {
   return (
     <div className="container">
@@ -8,31 +11,23 @@ const RecipeList = ({ recipes }) => {
           recipes.map((recipe) => (
             <div
               key={recipe.id}
-              className="col-md-6 d-flex align-items-stretch mb-3 cardBody"
+              className="col-md-6 d-flex align-items-stretch mb-3"
             >
-              <div className="card w-100">
-                <div className="card-body">
+              <Link
+                to={`/recipes/${recipe.id}`}
+                className="card w-100 text-decoration-none text-dark"
+              >
+                <div
+                  className="card-body"
+                  style={{ backgroundColor: "#f7f7f7" }}
+                >
                   <h5 className="card-title">{recipe.name}</h5>
-                  <p className="card-text">
-                    <strong>Ingredients:</strong>
-                  </p>
-                  <ul>
-                    {recipe.ingredients ? (
-                      recipe.ingredients
-                        .split(",")
-                        .map((ingredient, index) => (
-                          <li key={index}>{ingredient.trim()}</li>
-                        ))
-                    ) : (
-                      <li>No ingredients listed.</li>
-                    )}
-                  </ul>
-
-                  <p className="card-text">
-                    <strong>Instructions:</strong> {recipe.instructions}
+                  <p className="card-text">{recipe.description}</p>
+                  <p classname="card-text" style={{ textAlign: "right" }}>
+                    Author: {recipe.author}
                   </p>
                 </div>
-              </div>
+              </Link>
             </div>
           ))
         )}

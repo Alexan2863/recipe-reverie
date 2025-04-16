@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import RecipeList from "./Components/RecipeList";
 import RecipeForm from "./Components/RecipeForm";
+import RecipeDetail from "./Components/RecipeDetail";
+import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import bannerImage from "./assets/banner.jpg";
 
@@ -44,31 +46,33 @@ function App() {
   };
 
   return (
-    <div className="container mt-4">
-      <img
-        src={bannerImage}
-        alt="Five gray spoons filled with assorted spice powders near chilli peppers by Calum Lewis."
-        className="banner-img"
-      />
-      <h1 className="text-center text-white">Recipe App</h1>
-      <RecipeForm onAddRecipe={addRecipe} />
-      <RecipeList recipes={recipes} />
-    </div>
+    <>
+      <div className="container mt-4">
+        <img
+          src={bannerImage}
+          alt="Five gray spoons filled with assorted spice powders near chilli peppers by Calum Lewis."
+          className="banner-img"
+        />
+        <h1 className="text-center m-3 text-white">Recipe App</h1>
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <RecipeForm onAddRecipe={addRecipe} />
+                <RecipeList recipes={recipes} />
+              </>
+            }
+          />
+          <Route
+            path="/recipes/:id"
+            element={<RecipeDetail recipes={recipes} />}
+          />
+        </Routes>
+      </div>
+    </>
   );
 }
-
-//https:developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
-// const user = {
-//   name: "Alex",
-//   age: 22,
-//   city: "Champaign",
-// };
-
-// const entries = Object.entries(user); //pair key and value, array of arrays
-// console.log(entries);
-
-// for (const [key, value] of entries) {
-//   console.log(`${key}: ${value} paired`);
-// }
 
 export default App;

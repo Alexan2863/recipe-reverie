@@ -7,10 +7,13 @@ const useRecipeForm = (initialState, onSubmit) => {
   const validate = () => {
     let tempErrors = {};
     if (!values.name) tempErrors.name = "Recipe name is required";
+    if (!values.description) tempErrors.description = "Description is required";
     if (!values.ingredients)
       tempErrors.ingredients = "Ingredients are required";
     if (!values.instructions)
       tempErrors.instructions = "Instructions are required";
+    if (!values.author) tempErrors.author = "Author name is required";
+
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
