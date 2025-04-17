@@ -2,17 +2,15 @@ import classes from "./SearchBar.module.css";
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
   return (
-    <div className="d-flex justify-content-end mb-3 text-white">
+    <div className="mb-3 text-white w-100">
       <input
         name="search"
         type="text"
-        placeholder="Search by recipe name or ingredients..."
+        placeholder="Search by recipe name, ingredient, or author..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className={`form-control w-auto text-white ${classes.placeholder}`}
+        className={`form-control w-100 text-white ${classes.placeholder}`}
         style={{
-          maxWidth: "400px",
-          minWidth: "300px",
           backgroundColor: "#131718",
           border: "1px solid white",
           color: "white",

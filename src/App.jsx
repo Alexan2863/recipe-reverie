@@ -52,7 +52,8 @@ function App() {
     const query = searchQuery.toLowerCase();
     return (
       recipe.name.toLowerCase().includes(query) ||
-      recipe.ingredients?.toLowerCase().includes(query)
+      recipe.ingredients?.toLowerCase().includes(query) ||
+      recipe.author?.toLowerCase().includes(query)
     );
   });
 
