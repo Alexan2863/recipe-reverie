@@ -1,4 +1,3 @@
-import React from "react";
 import useRecipeForm from "./hooks/useRecipeForm";
 
 const RecipeForm = ({ onAddRecipe }) => {
@@ -13,78 +12,75 @@ const RecipeForm = ({ onAddRecipe }) => {
         Recipe Name
       </label>
       <input
+        id="name"
         type="text"
         name="name"
-        placeholder="Recipe Name"
+        placeholder={errors.name || "Recipe Name"}
         value={values.name}
         onChange={handleChange}
-        className="form-control mb-3"
+        className={`form-control mb-3 ${errors.name ? "is-invalid" : ""}`}
         style={{ backgroundColor: "#f7f7f7" }}
       />
-      {errors.name && <small className="text-danger">{errors.name}</small>}
 
       <label htmlFor="description" className="text-white">
         Short description
       </label>
       <input
+        id="description"
         type="text"
         name="description"
-        placeholder="Short Description"
+        placeholder={errors.description || "Short Description"}
         value={values.description}
         onChange={handleChange}
-        className="form-control mb-3"
+        className={`form-control mb-3 ${
+          errors.description ? "is-invalid" : ""
+        }`}
         style={{ backgroundColor: "#f7f7f7" }}
       />
-      {errors.description && (
-        <small className="text-danger">{errors.description}</small>
-      )}
+
       <label htmlFor="ingredients" className="text-white">
         Ingredients
       </label>
       <textarea
+        id="ingredients"
         name="ingredients"
-        placeholder="Ingredients, separated by commas"
+        placeholder={errors.ingredients || "Ingredients, separated by commas"}
         value={values.ingredients}
         onChange={handleChange}
-        className="form-control mb-3"
+        className={`form-control mb-3 ${
+          errors.ingredients ? "is-invalid" : ""
+        }`}
         style={{ backgroundColor: "#f7f7f7" }}
       />
-      {errors.ingredients && (
-        <small className="text-danger">{errors.ingredients}</small>
-      )}
 
       <label htmlFor="instructions" className="text-white">
         Instructions
       </label>
       <textarea
+        id="instructions"
         name="instructions"
-        placeholder="Instructions"
+        placeholder={errors.instructions || "Instructions"}
         value={values.instructions}
         onChange={handleChange}
-        className="form-control mb-3"
+        className={`form-control mb-3 ${
+          errors.instructions ? "is-invalid" : ""
+        }`}
         style={{ backgroundColor: "#f7f7f7" }}
       />
-      {errors.instructions && (
-        <small className="text-danger">{errors.instructions}</small>
-      )}
 
       <label htmlFor="author" className="text-white">
         Author's Name
       </label>
       <input
+        id="author"
         type="text"
         name="author"
-        placeholder="Author"
+        placeholder={errors.author || "Author"}
         value={values.author}
         onChange={handleChange}
-        className="form-control mb-3"
+        className={`form-control mb-3 ${errors.author ? "is-invalid" : ""}`}
         style={{ backgroundColor: "#f7f7f7" }}
       />
-      {errors.author && (
-        <small className="text-danger" style={{ display: "block" }}>
-          {errors.author}
-        </small>
-      )}
 
       <div className="d-flex justify-content-end">
         <button

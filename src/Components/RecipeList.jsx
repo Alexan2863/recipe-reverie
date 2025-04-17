@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const RecipeList = ({ recipes }) => {
@@ -6,7 +5,7 @@ const RecipeList = ({ recipes }) => {
     <div className="container">
       <div className="row">
         {recipes.length === 0 ? (
-          <p className="col-12 text-center">No recipes available.</p>
+          <p className="col-12 text-center text-white">No recipes found.</p>
         ) : (
           recipes.map((recipe) => (
             <div
@@ -23,7 +22,7 @@ const RecipeList = ({ recipes }) => {
                 >
                   <h5 className="card-title">{recipe.name}</h5>
                   <p className="card-text">{recipe.description}</p>
-                  <p classname="card-text" style={{ textAlign: "right" }}>
+                  <p className="card-text" style={{ textAlign: "right" }}>
                     Author: {recipe.author}
                   </p>
                 </div>

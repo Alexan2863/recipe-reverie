@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import RecipeList from "./Components/RecipeList";
 import RecipeForm from "./Components/RecipeForm";
 import RecipeDetail from "./Components/RecipeDetail";
-import { Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import SearchBar from "./Components/SearchBar";
 import bannerImage from "./assets/banner.jpg";
 
 const API_URL =
@@ -12,6 +14,7 @@ const API_URL =
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchRecipes = async () => {
     try {
@@ -45,6 +48,14 @@ function App() {
     }
   };
 
+  const filteredRecipes = recipes.filter((recipe) => {
+    const query = searchQuery.toLowerCase();
+    return (
+      recipe.name.toLowerCase().includes(query) ||
+      recipe.ingredients?.toLowerCase().includes(query)
+    );
+  });
+
   return (
     <>
       <div className="container mt-4">
@@ -61,7 +72,11 @@ function App() {
             element={
               <>
                 <RecipeForm onAddRecipe={addRecipe} />
-                <RecipeList recipes={recipes} />
+                <SearchBar
+                  searchQuery={searchQuery}
+                  setSearchQuery={setSearchQuery}
+                />
+                <RecipeList recipes={filteredRecipes} />
               </>
             }
           />
