@@ -64,7 +64,18 @@ function App() {
           alt="Five gray spoons filled with assorted spice powders near chilli peppers by Calum Lewis."
           className="banner-img"
         />
-        <h1 className="text-center m-3 text-white">Recipe App</h1>
+        <div className="d-flex justify-content-center align-items-center">
+          <h1
+            className="text-center m-3 text-white py-2 px-4 rounded"
+            style={{
+              backgroundColor: "#131718",
+              borderRadius: "8px",
+              border: "1px solid white",
+            }}
+          >
+            Recipe Reverie
+          </h1>
+        </div>
 
         <Routes>
           <Route

@@ -9,9 +9,11 @@
 } */
 
 body {
-  margin: 0;
-  /* background-color: #ffba08bf; */
-  background-color: #1c1b19;
+  background-image: url("./assets/bg-pattern1.png");
+  background-repeat: repeat;
+  background-size: 350px auto;
+  background-color: #131718;
+  color: white;
 
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }

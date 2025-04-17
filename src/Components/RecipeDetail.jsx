@@ -31,7 +31,7 @@ const RecipeDetail = ({ recipes }) => {
 
   return (
     <div className={classes.content}>
-      <Link to="/" className="btn mb-3" style={{ backgroundColor: "#ffba08" }}>
+      <Link to="/" className="btn mb-3" style={{ backgroundColor: "#D6B760" }}>
         &larr; Back to Recipes
       </Link>
       <div>

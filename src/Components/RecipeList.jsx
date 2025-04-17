@@ -18,11 +18,17 @@ const RecipeList = ({ recipes }) => {
               >
                 <div
                   className="card-body"
-                  style={{ backgroundColor: "#f7f7f7" }}
+                  style={{
+                    backgroundColor: "#131718",
+                    border: "1px solid white",
+                  }}
                 >
-                  <h5 className="card-title">{recipe.name}</h5>
-                  <p className="card-text">{recipe.description}</p>
-                  <p className="card-text" style={{ textAlign: "right" }}>
+                  <h5 className="card-title text-white">{recipe.name}</h5>
+                  <p className="card-text text-white">{recipe.description}</p>
+                  <p
+                    className="card-text text-white"
+                    style={{ textAlign: "right" }}
+                  >
                     Author: {recipe.author}
                   </p>
                 </div>

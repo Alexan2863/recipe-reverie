@@ -7,7 +7,15 @@ const RecipeForm = ({ onAddRecipe }) => {
   );
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
+    <form
+      onSubmit={handleSubmit}
+      className="mb-4 p-4"
+      style={{
+        backgroundColor: "#131718",
+        borderRadius: "8px",
+        border: "1px solid white",
+      }}
+    >
       <label htmlFor="name" className="text-white">
         Recipe Name
       </label>
@@ -86,7 +94,7 @@ const RecipeForm = ({ onAddRecipe }) => {
         <button
           type="submit"
           className="btn"
-          style={{ backgroundColor: "#ffba08" }}
+          style={{ backgroundColor: "#D6B760" }}
         >
           Add Recipe
         </button>
