@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import classes from "./RecipeDetail.module.css";
+import Button from "./UI/Button";
 
 const RecipeDetail = ({ recipes }) => {
   const { id } = useParams();
@@ -31,9 +32,9 @@ const RecipeDetail = ({ recipes }) => {
 
   return (
     <div className={classes.content}>
-      <Link to="/" className="btn mb-3" style={{ backgroundColor: "#D6B760" }}>
+      <Button to="/" className="mb-3">
         &larr; Back to Recipes
-      </Link>
+      </Button>
       <div>
         <h2>
           <strong>{recipe.name}</strong>
@@ -54,7 +55,14 @@ const RecipeDetail = ({ recipes }) => {
       </div>
 
       <div className="d-flex justify-content-end">
-        <button className="btn btn-danger mt-3" onClick={handleDelete}>
+        <Button
+          className="mt-3 me-2 btnBorderReveal"
+          onClick={() => navigate(`/edit/${id}`)}
+        >
+          Edit Recipe
+        </Button>
+
+        <button className=" btn btn-danger mt-3" onClick={handleDelete}>
           Delete Recipe
         </button>
       </div>

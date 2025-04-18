@@ -1,4 +1,5 @@
 import useRecipeForm from "./hooks/useRecipeForm";
+import Button from "./UI/Button";
 
 const RecipeForm = ({ onAddRecipe }) => {
   const { values, errors, handleChange, handleSubmit } = useRecipeForm(
@@ -91,13 +92,7 @@ const RecipeForm = ({ onAddRecipe }) => {
       />
 
       <div className="d-flex justify-content-end">
-        <button
-          type="submit"
-          className="btn"
-          style={{ backgroundColor: "#D6B760" }}
-        >
-          Add Recipe
-        </button>
+        <Button type="submit">Add Recipe</Button>
       </div>
     </form>
   );

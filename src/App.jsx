@@ -7,7 +7,9 @@ import RecipeList from "./Components/RecipeList";
 import RecipeForm from "./Components/RecipeForm";
 import RecipeDetail from "./Components/RecipeDetail";
 import SearchBar from "./Components/SearchBar";
+import EditRecipe from "./Components/EditRecipe";
 import bannerImage from "./assets/banner.jpg";
+import Footer from "./Components/Footer";
 
 const API_URL =
   "https://recipe-app-cb403-default-rtdb.firebaseio.com/recipes.json";
@@ -96,8 +98,14 @@ function App() {
             path="/recipes/:id"
             element={<RecipeDetail recipes={recipes} />}
           />
+          <Route
+            path="/edit/:id"
+            element={<EditRecipe recipes={recipes} setRecipes={setRecipes} />}
+          />
         </Routes>
       </div>
+
+      <Footer />
     </>
   );
 }
