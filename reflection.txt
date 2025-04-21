@@ -1,0 +1,10 @@
+I have enjoyed iterating on this project, sending out the link on netlify for my friends and family to click around really transformed this website. It looks nothing like it did at first, because of their input. I added cool button styles and animations. I added a black deco art background as suggested from my best friend. And that influenced the name of the app, now with elegance and animations. Recipe Reverie is the app I wanted to make to really make my life easier. It most importantly gives me a way to finally get my families recipes, so I can make and eat the stuff I love and grew up eating.
+
+I also realized that I don't have to make something new, it doesn't have to be bold. With this project, I've realized that I can make all the apps that I want and don't have yet. And I don't have to pioneer anything, I can take what I love about other apps and leave the rest. Iterating over these "copies" is what made recipe-app into the Recipe Reverie!
+
+I thought it was really useful to come up with the proposal at first, it was a great benchmark and reference point while working on this project. I had a solid direction in the proposal, and I thought it would lock me into a design and I wouldn't be able to deviate from it if I found a better idea. Or rather, I worried that the proposal would prevent me from finding a better idea. I think that there is still some truth to that, but I also see the value in having a plan.
+
+In the future, I want to have a navbar that has a link to the recipe form so I can clean up the home page. I already added the search function that lets me sort through who made each recipe, but also search by what is in it. The last change I already made was from feedback from my mom, who was my greatest inspiration for this website. She wanted to be able to edit the recipes, and that can be found on the recipe details page. 
+
+Besides that navbar, I think I'm very happy with the website. It will definitely get some use!
+

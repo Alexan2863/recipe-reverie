@@ -6,7 +6,7 @@ import Button from "./UI/Button";
 const EditRecipe = ({ recipes, setRecipes }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const recipe = recipes.find((r) => r.id === id);
+  const recipe = recipes.find((recipe) => recipe.id === id);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -21,15 +21,15 @@ const EditRecipe = ({ recipes, setRecipes }) => {
     }
   }, [recipe]);
 
-  const handleChange = (e) => {
+  const handleChange = (event) => {
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [event.target.name]: event.target.value,
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     try {
       await axios.put(
@@ -37,9 +37,8 @@ const EditRecipe = ({ recipes, setRecipes }) => {
         formData
       );
 
-      // Optionally update local state
       const updated = recipes.map((r) =>
-        r.id === id ? { ...r, ...formData } : r
+        recipe.id === id ? { ...recipe, ...formData } : recipe
       );
       setRecipes(updated);
 
