@@ -1,11 +1,13 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import classes from "./RecipeDetail.module.css";
 import Button from "./UI/Button";
+import { useAuth } from "../contexts/AuthContext";
 
 const RecipeDetail = ({ recipes }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
 
   const recipe = recipes.find((r) => r.id === id);
 
@@ -55,16 +57,19 @@ const RecipeDetail = ({ recipes }) => {
       </div>
 
       <div className="d-flex justify-content-end">
-        <Button
-          className="mt-3 me-2 btnBorderReveal"
-          onClick={() => navigate(`/edit/${id}`)}
-        >
-          Edit Recipe
-        </Button>
-
-        <button className=" btn btn-danger mt-3" onClick={handleDelete}>
-          Delete Recipe
-        </button>
+        {currentUser && (
+          <Button
+            className="mt-3 me-2 btnBorderReveal"
+            onClick={() => navigate(`/edit/${id}`)}
+          >
+            Edit Recipe
+          </Button>
+        )}
+        {currentUser && (
+          <button className="btn btn-danger mt-3" onClick={handleDelete}>
+            Delete Recipe
+          </button>
+        )}
       </div>
     </div>
   );

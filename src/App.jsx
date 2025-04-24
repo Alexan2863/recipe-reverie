@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
+import { useAuth } from "./contexts/AuthContext";
+import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import RecipeList from "./Components/RecipeList";
@@ -8,8 +10,8 @@ import RecipeForm from "./Components/RecipeForm";
 import RecipeDetail from "./Components/RecipeDetail";
 import SearchBar from "./Components/SearchBar";
 import EditRecipe from "./Components/EditRecipe";
-import bannerImage from "./assets/banner.jpg";
-import Footer from "./Components/Footer";
+import LoginForm from "./Components/LoginForm";
+import MainLayout from "./layouts/MainLayout";
 
 const API_URL =
   "https://recipe-app-cb403-default-rtdb.firebaseio.com/recipes.json";
@@ -17,6 +19,8 @@ const API_URL =
 function App() {
   const [recipes, setRecipes] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const { currentUser } = useAuth();
+  const location = useLocation();
 
   const fetchRecipes = async () => {
     try {
@@ -61,51 +65,61 @@ function App() {
 
   return (
     <>
-      <div className="container mt-4">
-        <img
-          src={bannerImage}
-          alt="Five gray spoons filled with assorted spice powders near chilli peppers by Calum Lewis."
-          className="banner-img"
-        />
-        <div className="d-flex justify-content-center align-items-center">
-          <h1
-            className="text-center m-3 text-white py-2 px-4 rounded"
-            style={{
-              backgroundColor: "#131718",
-              borderRadius: "8px",
-              border: "1px solid white",
-            }}
-          >
-            Recipe Reverie
-          </h1>
+      {!currentUser && location.pathname !== "/login" && (
+        <div
+          style={{
+            backgroundColor: "#d6b760",
+            color: "#131718",
+            padding: "1rem",
+            textAlign: "center",
+          }}
+        >
+          You are not logged in. <strong>Log in to add or edit recipes.</strong>
         </div>
+      )}
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <RecipeForm onAddRecipe={addRecipe} />
-                <SearchBar
-                  searchQuery={searchQuery}
-                  setSearchQuery={setSearchQuery}
-                />
-                <RecipeList recipes={filteredRecipes} />
-              </>
-            }
-          />
-          <Route
-            path="/recipes/:id"
-            element={<RecipeDetail recipes={recipes} />}
-          />
-          <Route
-            path="/edit/:id"
-            element={<EditRecipe recipes={recipes} setRecipes={setRecipes} />}
-          />
-        </Routes>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <MainLayout>
+              {currentUser && <RecipeForm onAddRecipe={addRecipe} />}
+              <SearchBar
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+              />
+              <RecipeList recipes={filteredRecipes} />
+            </MainLayout>
+          }
+        />
 
-      <Footer />
+        <Route
+          path="/recipes/:id"
+          element={
+            <MainLayout>
+              <RecipeDetail recipes={recipes} />
+            </MainLayout>
+          }
+        />
+
+        <Route
+          path="/edit/:id"
+          element={
+            <MainLayout>
+              <EditRecipe recipes={recipes} setRecipes={setRecipes} />
+            </MainLayout>
+          }
+        />
+
+        <Route
+          path="/login"
+          element={
+            <MainLayout>
+              <LoginForm />
+            </MainLayout>
+          }
+        />
+      </Routes>
     </>
   );
 }
